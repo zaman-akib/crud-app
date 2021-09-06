@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './index.css'
 
 function ToDoForm(props) {
     const [id, setId] = useState(0)
@@ -25,14 +24,12 @@ function ToDoForm(props) {
         setId(id + 1)
 
         props.onSubmit(
-            [
-                {
-                    id: id,
-                    name: inputs.name,
-                    email: inputs.email,
-                    todo: inputs.todo,
-                }         
-            ]
+            {
+                id: id,
+                name: inputs.name,
+                email: inputs.email,
+                todo: inputs.todo,
+            }
         )
 
         setInputs({
@@ -48,7 +45,7 @@ function ToDoForm(props) {
                 <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Enter Name" onChange={handleChange} value={inputs.name} name="name" required></input>
                 <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Enter Email" onChange={handleChange} value={inputs.email} name="email" required></input>
                 <textarea className="p-3 border rounded-lg mb-3" type="text" placeholder="Enter ToDo" onChange={handleChange} value={inputs.todo} name="todo" required></textarea>
-                <button className="bg-green-200 mx-auto rounded-lg p-2 px-4 text-xl">Assign New To-Do</button>
+                <button className="bg-green-200 mx-auto rounded-lg p-2 px-4 text-xl mb-3">Assign New To-Do</button>
             </form>
         </React.Fragment>
     )
