@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './index.css'
+import ToDoList from './ToDoList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <div className="flex flex-col font-trebuchet p-5 m-20 md:mx-28 sm:mx-20 lg:mx-48 border rounded-xl border-green-200 shadow-lg">
+        <div className="text-3xl text-center pb-5 font-bold underline">To-Dos</div>
+        <ToDoList />
+      </div>
+    </React.Fragment>
+  )
 }
 
 export default App;
