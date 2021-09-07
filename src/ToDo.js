@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { FaRegEdit } from 'react-icons/fa'
+import ToDoForm from './ToDoForm'
 
-function ToDo({todos}) {
+function ToDo({todos, updateTodo, deleteToDo}) {
+    const [edit, setEdit] = useState({
+        id: null,
+        name: '',
+        email: '',
+        todos:'',
+    })
+
+    const submitUpdate = values => {
+        console.log(edit.id)
+        values.id = edit.id
+        updateTodo(edit.id, values)
+        setEdit({
+            id: null,
+            name: '',
+            email: '',
+            todos:'',
+        })
+    }
+
+    if(edit.id) {
+        return <ToDoForm edit={edit} onSubmit={submitUpdate} />
+    }
 
     return (
         <React.Fragment>
@@ -13,8 +36,19 @@ function ToDo({todos}) {
                             <div className="flex flex-row justify-between">
                                 <div className="text-lg">Name: {todo.name}</div>
                                 <div className="flex flex-row space-x-2">         
-                                    <FaRegEdit />
-                                    <RiDeleteBinLine />
+                                    <FaRegEdit 
+                                    className="cursor-pointer"
+                                    onClick={() => setEdit({
+                                        id: todo.id,
+                                        name: todo.name,
+                                        email: todo.email,
+                                        todo: todo.todo,
+                                    })}
+                                    />
+                                    <RiDeleteBinLine 
+                                    className="cursor-pointer" 
+                                    onClick={() => deleteToDo(todo.id)}
+                                    />
                                 </div>
                             </div>
                             <div className="text-sm">Email: {todo.email}</div>
@@ -23,7 +57,7 @@ function ToDo({todos}) {
                             <div>To-do: {todo.todo}</div>
                         </div>
                     </div>
-                )) : <div>No To-dos found</div>
+                )) : <div className="p-1 px-2">No To-dos found</div>
             }
         </React.Fragment>
     )

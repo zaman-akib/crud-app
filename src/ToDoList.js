@@ -11,10 +11,23 @@ function ToDoList() {
         setTodos(newTodos)
     }
 
+    const updateTodo = (id, newValues) => {
+        setTodos(prev => prev.map(item => (item.id === id ? newValues : item)))
+    }
+
+    const deleteToDo = id => {
+        const delToDo = todos.filter(todo => todo.id !== id)
+        setTodos(delToDo)
+    }
+
     return (
         <React.Fragment>
             <ToDoForm onSubmit={addToDo} />
-            <ToDo todos={todos}/>
+            <ToDo 
+                todos={todos} 
+                updateTodo={updateTodo} 
+                deleteToDo={deleteToDo}
+            />
         </React.Fragment>
     )
 }
