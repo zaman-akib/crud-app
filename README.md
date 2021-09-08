@@ -9,5 +9,5 @@
 
 Instructions to run
 -------------------
-Command 1: npm install
+Command 1: npm install <br>
 Command 2: npn start
