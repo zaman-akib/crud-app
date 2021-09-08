@@ -45,7 +45,7 @@ function ToDoForm(props) {
                         <>
                             <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Edit Name" 
                                 onChange={handleChange} value={inputs.name} name="name" required></input>
-                            <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Edit Email" 
+                            <input className="p-3 border rounded-lg mb-3" type="email" placeholder="Edit Email" 
                                 onChange={handleChange} value={inputs.email} name="email" required></input>
                             <textarea className="p-3 border rounded-lg mb-3" type="text" placeholder="Edit ToDo" 
                                 onChange={handleChange} value={inputs.todo} name="todo" required></textarea>
@@ -55,7 +55,7 @@ function ToDoForm(props) {
                         <>
                             <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Enter Name" 
                                 onChange={handleChange} value={inputs.name} name="name" required></input>
-                            <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Enter Email" 
+                            <input className="p-3 border rounded-lg mb-3" type="email" placeholder="Enter Email" 
                                 onChange={handleChange} value={inputs.email} name="email" required></input>
                             <textarea className="p-3 border rounded-lg mb-3" type="text" placeholder="Enter Todo" 
                                 onChange={handleChange} value={inputs.todo} name="todo" required></textarea>

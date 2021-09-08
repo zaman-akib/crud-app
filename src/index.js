@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './assets/css/index.css';
+import CrudApp from './components/crud-main/CrudApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CrudApp />
   </React.StrictMode>,
   document.getElementById('root')
 );

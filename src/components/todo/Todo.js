@@ -1,30 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { FaRegEdit } from 'react-icons/fa'
-import ToDoForm from './ToDoForm'
+import ToDoForm from './TodoForm'
+import { GlobalContext } from '../../context/GlobalState'
 
-function ToDo({todos, updateTodo, deleteToDo}) {
+function ToDo() {
+    const { todos, updateTodo, deleteTodo } = useContext(GlobalContext)
+
     const [edit, setEdit] = useState({
         id: null,
         name: '',
         email: '',
-        todos:'',
+        todo:'',
     })
 
-    const submitUpdate = values => {
-        console.log(edit.id)
-        values.id = edit.id
-        updateTodo(edit.id, values)
+    const submitUpdate = updatedTodo => {
+        updatedTodo.id = edit.id
+        updateTodo(edit.id, updatedTodo)
         setEdit({
             id: null,
             name: '',
             email: '',
-            todos:'',
+            todo:'',
         })
     }
 
     if(edit.id) {
-        return <ToDoForm edit={edit} onSubmit={submitUpdate} />
+        return <ToDoForm edit={edit} onSubmit={submitUpdate}/>
     }
 
     return (
@@ -47,7 +49,7 @@ function ToDo({todos, updateTodo, deleteToDo}) {
                                     />
                                     <RiDeleteBinLine 
                                     className="cursor-pointer" 
-                                    onClick={() => deleteToDo(todo.id)}
+                                    onClick={() => deleteTodo(todo.id)}
                                     />
                                 </div>
                             </div>
