@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
-function ToDoForm(props) {
+function ToDoForm({edit, onSubmit}) { 
     const [id, setId] = useState(1)
-    const [inputs, setInputs] = useState(props.edit ? {
-        name: props.edit.name,
-        email: props.edit.email,
-        todo: props.edit.todo,
+
+    const [inputs, setInputs] = useState(edit ? {
+        name: edit.name,
+        email: edit.email,
+        todo: edit.todo,
     } : {
         name:'',
         email:'',
@@ -13,9 +14,10 @@ function ToDoForm(props) {
     })
 
     const handleChange = e => {
+        const {name, value} = e.target
         setInputs({
             ...inputs,
-            [e.target.name]: e.target.value,
+            [name]: value,
         })
     }
     
@@ -23,11 +25,12 @@ function ToDoForm(props) {
         e.preventDefault()
         setId(id + 1)
 
-        props.onSubmit({
+        const {name, email, todo} = inputs
+        onSubmit({
             id: id,
-            name: inputs.name,
-            email: inputs.email,
-            todo: inputs.todo,
+            name,
+            email,
+            todo,
         })
 
         setInputs({
@@ -41,7 +44,7 @@ function ToDoForm(props) {
         <React.Fragment>
             <form className="flex flex-col justify-between p-2" onSubmit={handleSubmit}>
                 {
-                    props.edit ? (
+                    edit ? (
                         <>
                             <input className="p-3 border rounded-lg mb-3" type="text" placeholder="Edit Name" 
                                 onChange={handleChange} value={inputs.name} name="name" required></input>

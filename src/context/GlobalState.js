@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 import AppReducer from './AppReducer'
+import {ADD_TODO, DELETE_TODO, UPDATE_TODO} from './ActionTypes'
 
 const initialState = {
     todos: [],
@@ -12,14 +13,14 @@ export const GlobalProvider = ({ children }) => {
 
     function addTodo(newTodo) {
         dsipatch({
-            type: 'ADD_TODO',
+            type: ADD_TODO,
             value: newTodo,
         })
     }
 
     function updateTodo(id, updatedTodo) {
         dsipatch({
-            type: 'UPDATE_TODO',
+            type: UPDATE_TODO,
             id: id,
             value: updatedTodo,
         })
@@ -27,7 +28,7 @@ export const GlobalProvider = ({ children }) => {
 
     function deleteTodo(id) {
         dsipatch({
-            type: 'DELETE_TODO',
+            type: DELETE_TODO,
             value: id,
         })
     }
